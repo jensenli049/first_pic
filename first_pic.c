@@ -1,26 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <string.h>
 
 int main(){
-  char header[18] = "P6\n400 400\n255\n";
-  char ppm[3600] = {0};
-  int i, r;
-  
-  memset(ppm, header, sizeof(header));
   srand(time(NULL));
-  r = rand() % 256;
-  
-  for(i = 0; i < 3600; i++){
-    sprintf("%s%c%c%c", 255, 255, 0); 
-    
-  };
-}
+  char header[18] = "P6\n512 512\n255\n";
+  int i, j, k, l, a = 255, b = 0, c = 0;
+  printf("%s",header);
 
-int close_rand(int num){
-    int r = rand() % 10;
-    int a = rand() % 2;
-    if(a)
-      return num + r;
-    return num - r;
+  for(i = 0; i < 256; i++)
+    for(l = 0; l < 2; l++)
+      for(j = 0; j < 256; j++)
+	for(k=0; k<2; k++)
+	  printf("%c%c%c", a,(b+i+j)%256,c+j);
 }
-
